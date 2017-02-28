@@ -1,0 +1,133 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# RPG multijugador
+
+Gestiona el nivel y equipo de cada jugador
+
+## Characters [/users/idPlayer?{nameCharacter}]
+
+### Retrieves a player's character with lvl [GET]
+
++ Response 200 (application/json)
+
+        {
+            "player": "halazate"
+            "character": "loli",
+            "lvl": 1
+        }
+        
+### Stores player's character lvl up [POST]
+
++ Request (application/json)
+
+        {
+            "lvl": 2
+        }
+
++ Response 200
+
+## Unlock a new character [/users/idPlayer/profile]
+
+### Retrives page with the player´s information [GET]
+
++ Response 200 (application/json)
+
+        {
+            "id": 01,
+            "name": "halzate",
+            "score": 3000,
+            "charactersNames": ["loli" , "poli" , "loki", "lila"],
+            "charactersLvl": [5 , 3 , 1, 4]
+            "team": ["loki", "loli"],
+            "charactersUnlocked" : ["poli", "lila"]
+        }
+        
+
+### Stores the new character unlocked [POST]
+
++ Request (application/json)
+
+        {
+            "characterName": "lilo",
+            "characterLvl":1
+            "Type": "warrior",
+            "health": 100,
+            "attack": 20,
+            "defense": 5,
+            "specialAttack": 30,
+            "specialDefense": 5,
+            "element": "fire"
+        }
+        
++ Response 200
+        
+## Character upgrade stats [/users/idPlayer/nameCharacter]
+
+### Retrives the character´s stats [GET]
+
++ Response 200 (application/json)
+
+        {
+            "characterName": "loli",
+            "characterLvl": 5
+            "Type": "archer",
+            "health": 60,
+            "attack": 25,
+            "defense": 3,
+            "specialAttack": 35,
+            "specialDefense": 3,
+            "element": "water"
+            
+        }
+    
+### Stores a new stats [POST]
+
++ Request (application/json)
+
+        {
+           "attack": 30
+        }
+    
++ Response 200
+
+## Player´s team [/users/idPlayer/team]
+
+### Retrives the player´s team [GET]
+
++ Response 200 (application/json)
+
+        {
+            "team" : ["loki", "loli"]
+        } 
+    
+### Stores the new player´s team [POST]
+
++ Request 200 (application/json)
+
+        {
+            "team" : ["loli", "poli"]
+        }
+
++ Response 200
+        
+## Stores the score after a fight [/users/idPlayer/score]
+
+### Retrives the players score [GET]        
+
++ Response 200 (application/json)
+        
+        {
+            "name" : "halazate",
+            "score" : 800
+        }
+    
+### Stores player´s new score [POST]
+
++ Request 200 (application/json)
+
+        {
+            "score" : 1500
+        }
+        
++ Response 200
